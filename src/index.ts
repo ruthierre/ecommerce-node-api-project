@@ -7,7 +7,7 @@ import { DomainException } from '@shared/domain/domain.exception';
 import { prisma } from '@main/infra/database/orm/prisma/client';
 import { categoriaRepositorio as categoriaRepo } from '@modules/catalogo/infra/database';
 import { produtoRepositorio as produtoRepo } from '@modules/catalogo/infra/database';
-import { recuperarCategoriaPorIdUseCase } from '@modules/catalogo/application/use-case';
+import { recuperarCategoriaPorIdUseCase, recuperarTodasCategorias } from '@modules/catalogo/application/use-case';
 
 
 async function main() {
@@ -22,7 +22,7 @@ async function main() {
     //Recuperar Categoria por UUID//
     ////////////////////////////////
    
-     console.log(await recuperarCategoriaPorIdUseCase.execute("26569beb-ddf9-4100-b40b-933f0a255fef"));
+     //console.log(await recuperarCategoriaPorIdUseCase.execute("26569beb-ddf9-4100-b40b-933f0a255fef"));
 
     
     //console.log(categoriaRecuperada);
@@ -31,6 +31,7 @@ async function main() {
     //Recuperar Todas as Categorias//
     /////////////////////////////////
     
+    //console.log(await recuperarTodasCategorias.execute());
     //const todasCategorias: Array<Categoria> = await categoriaRepo.recuperarTodos();
 
     //console.log(todasCategorias);
