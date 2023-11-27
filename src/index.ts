@@ -7,7 +7,7 @@ import { DomainException } from '@shared/domain/domain.exception';
 import { prisma } from '@main/infra/database/orm/prisma/client';
 import { categoriaRepositorio as categoriaRepo } from '@modules/catalogo/infra/database';
 import { produtoRepositorio as produtoRepo } from '@modules/catalogo/infra/database';
-import { recuperarCategoriaPorIdUseCase, recuperarTodasCategorias } from '@modules/catalogo/application/use-case';
+import { atualizarCategoriaUseCase, deletarCategoriaUseCase, inserirCategoriaUseCase, recuperarCategoriaPorIdUseCase, recuperarProdutoPorIdUseCase, recuperarTodasCategorias } from '@modules/catalogo/application/use-case';
 
 
 async function main() {
@@ -47,6 +47,10 @@ async function main() {
     /////////////////////
     //Inserir Categoria//
     /////////////////////
+
+    // console.log(await inserirCategoriaUseCase.execute({
+    //     nome: "Banho"
+    // }));
     
     // const categoria: Categoria = Categoria.criar({
     //     nome:'Cozinha'
@@ -60,6 +64,10 @@ async function main() {
     //Atualizar Categoria//
     ///////////////////////
     
+    // console.log(await atualizarCategoriaUseCase.execute({
+    //     id:"bd62a95c0-6bb6-485a-8555-4f392bdcf4e8",
+    //     nome: "Banho"
+    // }));
     //const categoria: Categoria = Categoria.recuperar({
     //    id: "5ccdd6ab-d043-42f0-937b-1260fe47886a",
     //    nome: "Cozinha Americana"
@@ -80,6 +88,8 @@ async function main() {
     ////////////////////////////////
 	//Recuperar Produto por UUID//
 	////////////////////////////////
+
+    //  console.log( await recuperarProdutoPorIdUseCase.execute("9a26729c-581d-4369-9fbe-3e312e8a75e9"));
 		
 	//const produtoRecuperado: Produto | null = await produtoRepo.recuperarPorUuid("7f35c7f4-ce26-4503-bfce-0afd937adfb8");
 
@@ -90,39 +100,39 @@ async function main() {
     ///////////////////
 	//Inserir Produto//
 	///////////////////
-	/*
+	
     
-    const categoria01: Categoria = Categoria.recuperar({
-        id: "03f890b0-684a-44ba-a887-170e26bb2cd2",
-        nome: 'Cozinha'
-    });     
+    // const categoria01: Categoria = Categoria.recuperar({
+    //     id: "26569beb-ddf9-4100-b40b-933f0a255fef",
+    //     nome: 'Cozinha'
+    // });     
 
-    const categoria02: Categoria = Categoria.recuperar({
-        id: "fc762da1-8d2c-4ffa-9559-901db94cb92e",
-        nome: 'Banho'
-    })
+    // const categoria02: Categoria = Categoria.recuperar({
+    //     id: "d5093d61-e5a0-4a69-b56f-b29e11c17615",
+    //     nome: 'Banho'
+    // })
 
-    const produto: Produto = Produto.criar({
-        nome:'Pano de Pratro',
-        descricao:'Algodão fio 60',
-        valor:30,
-        categorias:[categoria01]
-    });
+    // const produto: Produto = Produto.criar({
+    //     nome:'Pano de Pratro',
+    //     descricao:'Algodão fio 60',
+    //     valor:30,
+    //     categorias:[categoria01, categoria02]
+    // });
 
-	const produtoInserido = await produtoRepo.inserir(produto);
+	// const produtoInserido = await produtoRepo.inserir(produto);
 
-	console.log(produtoInserido);
-    */
-
+	// console.log(produtoInserido);
+    
+ 
     
 
     /////////////////////////////////////////////////
 	//Recuperar Todos os Produtos e Suas Categorias//
 	/////////////////////////////////////////////////
 		
-	const todosProdutos: Array<Produto> = await produtoRepo.recuperarTodos();
+	// const todosProdutos: Array<Produto> = await produtoRepo.recuperarTodos();
 
-	console.log(todosProdutos);
+	// console.log(todosProdutos);
 
     ///////////////////////////////////////////////
 	//Atualizar Produto - Sem Atulizar Categorias//
@@ -142,7 +152,8 @@ async function main() {
     ///////////////////
 	//Deletar Produto//
 	///////////////////
-		
+
+	// console.log( await deletarCategoriaUseCase.execute("b5b8d72c-aa7c-4d13-a44f-4b3d8964c086"));	
 	//const produtoDeletado: boolean = await produtoRepo.deletar("7d6a14d5-02f3-4b6d-8cb8-8601ff151f10");
 
 	//console.log(produtoDeletado);
