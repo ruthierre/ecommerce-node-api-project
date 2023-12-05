@@ -20,5 +20,5 @@ export {
      inserirCategoriaUseCase,
      atualizarCategoriaUseCase,
      deletarCategoriaUseCase,
-     recuperarProdutoPorIdUseCase
+     recuperarProdutoPorIdUseCase,
     }
