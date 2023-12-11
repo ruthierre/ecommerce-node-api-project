@@ -7,8 +7,8 @@ import { IUseCase } from "@shared/application/use-case.interface";
 class RecuperarCategoriaPorIdUseCase implements IUseCase<string, ICategoria>{
     private _categoriaRepositorio: ICategoriaRepository<Categoria>
 
-    constructor(repositorio:ICategoriaRepository<Categoria>){
-        this._categoriaRepositorio = repositorio;
+    constructor(categoriaRepositorio:ICategoriaRepository<Categoria>){
+        this._categoriaRepositorio = categoriaRepositorio;
     }
 
     async execute(uuid: string ): Promise<ICategoria> {

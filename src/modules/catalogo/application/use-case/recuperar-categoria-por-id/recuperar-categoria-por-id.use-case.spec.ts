@@ -1,12 +1,10 @@
+import { Categoria } from "@modules/catalogo/domain/categoria/categoria.entity";
+import { ICategoriaRepository } from "@modules/catalogo/domain/categoria/categoria.repository.interface";
+import { afterEach, beforeAll, describe, expect, test, vi } from "vitest";
 import { MockProxy, mock, mockReset } from "vitest-mock-extended";
 import { RecuperarCategoriaPorIdUseCase } from "./recuperar-categoria-por-id.use-case";
-import { ICategoriaRepository } from "@modules/catalogo/domain/categoria/categoria.repository.interface";
-import { Categoria } from "@modules/catalogo/domain/categoria/categoria.entity";
-import { afterEach, beforeAll, vi , test, describe, expect} from "vitest";
 import { ICategoria } from "@modules/catalogo/domain/categoria/categoria.types";
 import { CategoriaApplicationExceptions } from "../../exception/categoria.application.exception";
-
-
 
 let categoriaRepositorioMock: MockProxy<ICategoriaRepository<Categoria>>;;
 let recuperarCategoriaPorIdUseCase: RecuperarCategoriaPorIdUseCase;
@@ -14,9 +12,7 @@ let recuperarCategoriaPorIdUseCase: RecuperarCategoriaPorIdUseCase;
 describe('Caso de Uso: Recuperar Categoria por ID', () => {
 
     beforeAll(async () => {
-
         categoriaRepositorioMock = mock<ICategoriaRepository<Categoria>>();
-
         recuperarCategoriaPorIdUseCase = new RecuperarCategoriaPorIdUseCase(categoriaRepositorioMock);
     });
 
@@ -25,13 +21,12 @@ describe('Caso de Uso: Recuperar Categoria por ID', () => {
         mockReset(categoriaRepositorioMock);
     });
 
-   
     test('Deve Recuperar Uma Categoria por UUID', async () => {
 
         //Dado (Given)
         const categoriaInputDTO = {
-            id: "80830927-8c3e-4db9-9ddf-30ea191f139b",
-            nome: "Cama"
+            id: "26569beb-ddf9-4100-b40b-933f0a255fef",
+            nome: "Sala"
         };
 
         categoriaRepositorioMock.existe.mockResolvedValue(true);
@@ -48,19 +43,18 @@ describe('Caso de Uso: Recuperar Categoria por ID', () => {
 
     });
 
-    //Usado para indicar que uma asserção falhará explicitamente.
     test('Deve Lançar uma Exceção ao Tentar Recuperar uma Categoria que Não Existe', async () => {
-   
-         //Dado (Given)
-         const categoriaInputDTO = {
-            id: "80830927-8c3e-4db9-9ddf-30ea191f139b",
-            nome: "Cama"
-        };
 
+        //Dado (Given)
+        const categoriaInputDTO = {
+            id: "26569beb-ddf9-4100-b40b-933f0a255fff",
+            nome: "cama"
+        };
+	
         categoriaRepositorioMock.existe.mockResolvedValue(false);
 
         //Quando (When) e Então (Then)
-        await expect(() => recuperarCategoriaPorIdUseCase.execute("80830927-8c3e-4db9-9ddf-30ea191f139b"))
+        await expect(() => recuperarCategoriaPorIdUseCase.execute(categoriaInputDTO.id))
             .rejects
             .toThrowError(CategoriaApplicationExceptions.CategoriaNaoEncontrada);
 
