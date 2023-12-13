@@ -3,6 +3,7 @@ import { ICategoriaRepository } from "@modules/catalogo/domain/categoria/categor
 import { ICategoria } from "@modules/catalogo/domain/categoria/categoria.types";
 import { CategoriaMap } from "@modules/catalogo/infra/mappers/categoria.map";
 import { IUseCase } from "@shared/application/use-case.interface";
+import { CategoriaApplicationExceptions } from "../../exception/categoria.application.exception";
 
 class RecuperarCategoriaPorIdUseCase implements IUseCase<string, ICategoria>{
     private _categoriaRepositorio: ICategoriaRepository<Categoria>
@@ -16,7 +17,7 @@ class RecuperarCategoriaPorIdUseCase implements IUseCase<string, ICategoria>{
         const existeCategoria: boolean = await this._categoriaRepositorio.existe(uuid);
 
         if(!existeCategoria){
-            throw new Error("A Categoria não existe na Base de Dados.");
+            throw new CategoriaApplicationExceptions.CategoriaNaoEncontrada();
         }
 
         const categoria = await this._categoriaRepositorio.recuperarPorUuid(uuid);
