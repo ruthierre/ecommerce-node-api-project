@@ -1,0 +1,35 @@
+@host = localhost
+@port = 3000
+@apiversion = api/v1
+
+### Recuperar Todos os Produtos
+GET http://{{host}}:{{port}}/{{apiversion}}/produtos
+
+### Inserir Um Produto
+POST http://{{host}}:{{port}}/{{apiversion}}/produtos
+Content-type: application/json
+
+{
+    
+    "nome": " lençol de cama king Size",
+    "descricao": "tamanho 15m x 10m, Seda pura",
+    "valor": 900,
+    "categorias": [
+      {
+        "id": "26569beb-ddf9-4100-b40b-933f0a255fef",
+        "nome": "Sala",
+        "dataCriacao": "2023-11-06T23:45:26.303Z",
+        "dataAtualizacao": "2023-12-04T23:44:56.260Z"
+      },
+      {
+        "id": "d5093d61-e5a0-4a69-b56f-b29e11c17615",
+        "nome": "Banho",
+        "dataCriacao": "2023-11-08T00:54:14.508Z",
+        "dataAtualizacao": "2023-11-08T00:54:14.508Z"
+      }
+    ],
+    "dataCriacao": "2023-11-08T00:55:43.003Z",
+    "dataAtualizacao": "2023-11-08T00:55:43.003Z",
+    "dataExclusao": null,
+    "status": "ATIVO"
+  }
