@@ -29,3 +29,6 @@ Content-Type: application/json
 ### Deletar Categoria
 
 DELETE http://{{host}}:{{port}}/{{apiversion}}/categorias/0309cb21-cc68-47ba-b2fa-ca39bdb835de
+
+### Recuperar Todos os Produtos
+GET http://{{host}}:{{port}}/{{apiversion}}/produtos
