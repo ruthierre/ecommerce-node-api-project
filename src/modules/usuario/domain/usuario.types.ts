@@ -28,9 +28,13 @@ type RecuperarUsuarioProps = IUsuario & {
     id: NonNullable<IUsuario['id']>
 };
 
+//Credenciais do Usuário
+type CredenciaisUsuarioProps = Omit<IUsuario, "id" | "nome" | "tipo" | KeysDatasControle>;
+
 export {
     IUsuario,
     CriarUsuarioProps,
     RecuperarUsuarioProps,
-    TipoUsuario
+    TipoUsuario,
+    CredenciaisUsuarioProps
 }
