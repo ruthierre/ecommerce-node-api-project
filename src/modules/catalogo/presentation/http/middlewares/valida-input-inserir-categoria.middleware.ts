@@ -11,12 +11,12 @@ const validaInputInserirCategoriaMiddleware = (
     request: Request,
     response: Response,
     next: NextFunction) => {
-        try {
-            InserirCategoriaSchema.parse(request.body);
-            next();
-        } catch (error) {
-            next(error);
-        }
+    try {
+        InserirCategoriaSchema.parse(request.body);
+        next();
+    } catch (error) {
+        next(error);
+    }
 }
 
 export { validaInputInserirCategoriaMiddleware as validaInputInserirCategoria }
