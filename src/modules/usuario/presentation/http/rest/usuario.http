@@ -18,6 +18,6 @@ POST http://{{host}}:{{port}}/{{apiversion}}/usuarios/autenticacao
 Content-type: application/json
 
 {
-    "email":"maria@mail.com",
+    "email":"walber@mail.com",
     "senha":"123456"
 }

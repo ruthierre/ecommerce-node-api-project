@@ -1,5 +1,6 @@
 import express from 'express';
 import { inserirProdutoController, recuperarTodosProdutosController } from './controllers';
+import { authUsuario } from '@main/presentation/http/middlewares/auth-usuario.middleware';
 
 
 
@@ -12,6 +13,7 @@ produtoRouter.get(
 
 produtoRouter.post(
     '/',
+    authUsuario(['ADMINISTRADOR']),
     (request, response, next) =>  inserirProdutoController.inserir(request, response, next)
 );
 

@@ -8,12 +8,13 @@ GET http://{{host}}:{{port}}/{{apiversion}}/produtos
 ### Inserir Um Produto
 POST http://{{host}}:{{port}}/{{apiversion}}/produtos
 Content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE0MTI3OTJmLWRkNjUtNDc4MS1hZTQzLWI3MmJkNjQ3MGRlNiIsIm5vbWUiOiJXYWxiZXIiLCJlbWFpbCI6IndhbGJlckBtYWlsLmNvbSIsInRpcG8iOiJBRE1JTklTVFJBRE9SIiwiaWF0IjoxNzA0ODUxNzc3LCJleHAiOjE3MDQ4NTUzNzd9.zqmWFzQ3V0aidPOnslb602RfkTRlm5psOqJC-HsPAso
 
 {
     
-    "nome": " lençol de cama king Size",
+    "nome": " Travesseiro de Penas de Ganso",
     "descricao": "tamanho 15m x 10m, Seda pura",
-    "valor": 900,
+    "valor": 200,
     "categorias": [
       {
         "id": "26569beb-ddf9-4100-b40b-933f0a255fef",
