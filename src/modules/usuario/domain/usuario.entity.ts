@@ -1,5 +1,6 @@
 import { Entity } from "@shared/domain/entity";
 import { CriarUsuarioProps, IUsuario, RecuperarUsuarioProps, TipoUsuario } from "./usuario.types";
+import { UsuarioExceptions } from "./usuario.exception";
 
 class Usuario extends Entity<IUsuario> implements IUsuario {
 
@@ -15,6 +16,10 @@ class Usuario extends Entity<IUsuario> implements IUsuario {
     private _dataAtualizacao?: Date | undefined;
     private _dataExclusao?: Date | null | undefined;
 
+    ////// Constantes ////////
+    public static readonly TAMANHO_MINIMO_NOME = 3;
+    public static readonly TAMANHO_MAXIMO_NOME = 50;
+
     ///////////////
     //Gets e Sets//
     ///////////////
@@ -24,6 +29,16 @@ class Usuario extends Entity<IUsuario> implements IUsuario {
     }
 
     private set nome(nome: string) {
+
+        const tamanhoNome = nome.trim().length;
+
+        if (tamanhoNome < Usuario.TAMANHO_MINIMO_NOME) {
+            throw new UsuarioExceptions.NomeUsuarioTamanhoMinimoInvalido;
+        }
+        if (tamanhoNome > Usuario.TAMANHO_MAXIMO_NOME) {
+            throw new UsuarioExceptions.NomeUsuarioTamanhoMaximoInvalido;
+        }
+
         this._nome = nome;
     }
 
@@ -31,7 +46,14 @@ class Usuario extends Entity<IUsuario> implements IUsuario {
         return this._email;
     }
 
-    public set email(email: string) {
+    private set email(email: string) {
+
+        const regexp: RegExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+        if (!regexp.test(email)) {
+            throw new UsuarioExceptions.EmailInvalido;
+        }
+
         this._email = email;
     }
 

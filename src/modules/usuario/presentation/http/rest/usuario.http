@@ -7,10 +7,10 @@ POST http://{{host}}:{{port}}/{{apiversion}}/usuarios
 Content-type: application/json
 
 {
-    "nome":"Walber",
-    "email":"walber@mail.com",
+    "nome":"Miojo",
+    "email":"miojo@Lamen.com",
     "senha":"123456",
-    "tipo": "ADMINISTRADOR"
+    "tipo": "CLIENTE"
 }
 
 ### Autenticar Um Usuário Existente a Partir das Credenciais
