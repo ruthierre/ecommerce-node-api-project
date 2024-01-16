@@ -7,7 +7,7 @@ POST http://{{host}}:{{port}}/{{apiversion}}/usuarios
 Content-type: application/json
 
 {
-    "nome":"Miojo",
+    "nome":"    ",
     "email":"miojo@Lamen.com",
     "senha":"123456",
     "tipo": "CLIENTE"
